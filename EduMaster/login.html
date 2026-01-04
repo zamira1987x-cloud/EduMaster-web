@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Kirish — EduMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, #e3f2fd, transparent 40%),
+        radial-gradient(circle at bottom right, #e1f5fe, transparent 40%),
+        linear-gradient(135deg, #f8fbff, #eef7ff);
+    }
+
+    .login-box {
+      background: rgba(255,255,255,0.9);
+      padding: 40px;
+      border-radius: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #1b0cee, #3fa9f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>EduMaster ga kirish</h2>
+
+  <!-- GOOGLE LOGIN -->
+  <div id="g_id_onload"
+       data-client_id="716630965840-r9mg1c8c61almjfclvq9i3a9m3bu5h6e.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse"
+       data-auto_prompt="false">
+  </div>
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-size="large"
+       data-theme="outline"
+       data-shape="pill">
+  </div>
+</div>
+
+<script>
+  function handleCredentialResponse(response) {
+    const data = JSON.parse(atob(response.credential.split('.')[1]));
+
+    localStorage.setItem("userName", data.name);
+    localStorage.setItem("userEmail", data.email);
+
+    // Login OK → kabinet
+    window.location.href = "kabinet.html";
+  }
+</script>
+
+</body>
+</html>

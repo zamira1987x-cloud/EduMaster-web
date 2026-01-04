@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>EduMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      text-align: center;
+      color: #1a1a1a;
+      /* Yangi professional ranglar: pastel, bir-biriga uyg‘un */
+      background:
+        radial-gradient(circle at top left, #a1c4fd, transparent 40%),
+        radial-gradient(circle at bottom right, #c2e9fb, transparent 40%),
+        linear-gradient(135deg, #e0f7fa, #f1f8e9);
+      overflow: hidden;
+      position: relative;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: 900;
+      /* Logo gradient ranglari yangilandi */
+      background: linear-gradient(90deg, #42a5f5, #7e57c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      /* Button gradient ranglari yangilandi */
+      background: linear-gradient(135deg, #42a5f5, #7e57c2);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    main {
+      padding: 140px 20px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 800;
+      /* H1 gradient ranglari yangilandi */
+      background: linear-gradient(90deg, #42a5f5, #7e57c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 22px;
+      color: #4a4a4a;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="goIndex()">EduMaster</div>
+  <div>
+    <button>Kurslar</button>
+    <button id="loginBtn">Kirish</button>
+  </div>
+</header>
+
+<main>
+  <h1>Bilim bilan kelajakni qur</h1>
+  <p>Barcha fanlar bitta platformada</p>
+</main>
+
+<script>
+  function goIndex() {
+    window.location.href = "index.html";
+  }
+
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Gmail sessiyasi bilan avtomatik kirish
+  if(localStorage.getItem("userLoggedIn") === "true"){
+    loginBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      window.location.href = "kabinet.html";
+    });
+  } else {
+    loginBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      let name = prompt("Ismingizni kiriting (Gmail orqali):", "Zamira");
+      let email = prompt("Email manzilingizni kiriting (Gmail):", "zamira@gmail.com");
+
+      if(name && email){
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userLoggedIn","true");
+        window.location.href = "kabinet.html";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

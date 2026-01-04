@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Kabinet — EduMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; font-family:"Segoe UI", Arial, sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #27AE60 , #F4F6F7); /* yumshoq, ko‘zni charchatmaydigan gradient */
+      color: #1a1a1a;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #42a5f5, #7e57c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+
+    .balance-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #1b0cee;
+    }
+
+    .balance-section span.star {
+      color: gold;
+      font-size: 20px;
+    }
+
+    .balance-section button {
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #7e57c2, #42a5f5);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .balance-section button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome h1 {
+      font-size: 36px;
+      color: #1b0cee;
+    }
+
+    .subjects {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .subject {
+      flex: 1 1 250px;
+      background: linear-gradient(145deg, #ffffff, #f0f4ff); /* yumshoq fon, chiroyli */
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .subject:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+    }
+
+    .subject h3 {
+      font-size: 22px;
+      color: #1b0cee;
+      margin-bottom: 10px;
+    }
+
+    .subject p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .subject button {
+      padding: 10px 22px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #42a5f5, #7e57c2);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .subject button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    @media(max-width: 700px) {
+      .subjects { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="goIndex()">EduMaster</div>
+  <div class="balance-section">
+    Balans: <span>8</span><span class="star">★</span>
+    <button onclick="topUp()">Balans to‘ldirish</button>
+  </div>
+</header>
+
+<main>
+  <div class="welcome">
+    <h1>Xush kelibsiz, Zamira</h1>
+  </div>
+
+  <div class="subjects">
+    <div class="subject">
+      <h3>Ingliz tili</h3>
+      <p>Maxsus testlar</p>
+      <button onclick="openEnglish()">Testni boshlash</button>
+    </div>
+
+    <div class="subject">
+      <h3>Matematika</h3>
+      <p>SAT Math testlari</p>
+      <button onclick="openMath()">Testni boshlash</button>
+    </div>
+  </div>
+</main>
+
+<script>
+function goIndex() { window.location.href = "index.html"; }
+function topUp() { window.location.href = "balansto'ldirish.html"; }
+function openEnglish() { window.location.href = "ingliztilisahifasi.html"; }
+function openMath() { alert("SAT Math test sahifasi keyingi bosqichda"); }
+</script>
+
+</body>
+</html>

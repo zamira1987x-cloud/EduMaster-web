@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Ingliz tili Test — EduMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; font-family:"Segoe UI", Arial, sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #d4fc79, #96e6a1); /* chiroyli gradient */
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+      min-height: 100vh;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #42a5f5, #7e57c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+      margin-bottom: 40px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .menu button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      background: linear-gradient(135deg, #42a5f5, #7e57c2);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .menu button:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Main content */
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .content h1 {
+      font-size: 32px;
+      color: #1b0cee;
+      margin-bottom: 20px;
+    }
+
+    .test-section {
+      background: rgba(255,255,255,0.3);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .test-section h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .test-section p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    @media(max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; flex-direction: row; overflow-x: auto; }
+      .menu { flex-direction: row; gap: 10px; }
+      .menu button { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo" onclick="goKabinet()">EduMaster</div>
+  <div class="menu">
+    <button onclick="showSection('listening')">Listening</button>
+    <button onclick="showSection('reading')">Reading</button>
+    <button onclick="showSection('speaking')">Speaking</button>
+    <button onclick="showSection('writing')">Writing</button>
+  </div>
+</div>
+
+<div class="content">
+  <h1>Ingliz tili Test</h1>
+
+  <div id="listening" class="test-section">
+    <h2>Listening Test</h2>
+    <p>Bu yerga siz bergan Listening testini qo‘shamiz.</p>
+  </div>
+
+  <div id="reading" class="test-section" style="display:none;">
+    <h2>Reading Test</h2>
+    <p>Reading test content bu yerda bo‘ladi.</p>
+  </div>
+
+  <div id="speaking" class="test-section" style="display:none;">
+    <h2>Speaking Test</h2>
+    <p>Speaking test content bu yerda bo‘ladi.</p>
+  </div>
+
+  <div id="writing" class="test-section" style="display:none;">
+    <h2>Writing Test</h2>
+    <p>Writing test content bu yerda bo‘ladi.</p>
+  </div>
+</div>
+
+<script>
+function goKabinet() {
+  window.location.href = "kabinet.html";
+}
+
+function showSection(sectionId) {
+  const sections = ['listening','reading','speaking','writing'];
+  sections.forEach(id => {
+    document.getElementById(id).style.display = (id===sectionId) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
